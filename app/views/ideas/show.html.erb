@@ -19,7 +19,7 @@ By: <%= @idea.user&.full_name %>
 <%= form_with(model: [@idea, @review], local: true) do |f| %>
     <%= f.text_area(
         :body,
-        cols: 20,
+        cols: 50,
         rows: 5
       )%>
       <%= f.submit "Review" %>
