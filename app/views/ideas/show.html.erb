@@ -1,0 +1,41 @@
+<div>
+<h1> <%= @idea.title %></h1>
+</div>
+<hr>
+<div>
+<p> <%= @idea.description %></p>
+By: <%= @idea.user&.full_name %>
+</div>
+<div>
+<% if can?(:crud, @idea) %>
+<%= link_to "Edit", edit_idea_path(@idea) %>
+</div>
+<div>
+
+<%= link_to "Delete", idea_path(@idea), method: :delete %>
+</div>
+<% end %>
+<h2>Reviews</h2>
+<%= form_with(model: [@idea, @review], local: true) do |f| %>
+    <%= f.text_area(
+        :body,
+        cols: 20,
+        rows: 5
+      )%>
+      <%= f.submit "Review" %>
+    <% end %>
+    <ul>
+    <% @reviews.each do |r| %>
+        <li>
+        <%= r.body %>
+        <%= link_to(
+            "Delete",
+        idea_review_path(@idea, r),
+          method: :delete )%>
+
+    
+        </li>
+        <% end %>
+        </ul>
+    
+

@@ -1,0 +1,15 @@
+<div class="form-group">
+
+<% @idea.each do |i| %>
+    <div class="form-control">
+      <%= link_to i.title, idea_path(i)%>
+      </div>
+      <hr>
+      <div class="form-control">
+      <%= i.description %>
+      </div>
+   
+  <% end %>
+  </div>
+ 
+  
